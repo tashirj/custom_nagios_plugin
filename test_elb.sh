@@ -1,7 +1,7 @@
 #!/bin/bash
 N=0
 CRITICAL=0
-cat /etc/ahalife/elblist | while read LINE ; do
+cat elblist | while read LINE ; do
         N=$((N+1))
         ELB_DETAILS=`echo $LINE`
 
@@ -16,14 +16,14 @@ cat /etc/ahalife/elblist | while read LINE ; do
 
 THRESHOLD VALUE of Instances for $ELB_NAME: $THRESHOLD_VALUE
 
-ACTUAL VALUE of  Instances for $ELB_NAME: $ACTUAL_VALUE" | mail -s "CRITICAL: Load Balancer $ELB_NAME : InService Instances: $ACTUAL_VALUE" "engineering@ahalife.com"
+ACTUAL VALUE of  Instances for $ELB_NAME: $ACTUAL_VALUE" | mail -s "CRITICAL: Load Balancer $ELB_NAME : InService Instances: $ACTUAL_VALUE" "engineering@abc.com"
 	else
 	if [ "$ACTUAL_VALUE" -ge "$THRESHOLD_VALUE" ] ; then
 		echo  "Number of Standard Instances behind $ELB_NAME: $ELB_INSTANCES
 
 THRESHOLD VALUE of Instances for $ELB_NAME: $THRESHOLD_VALUE
 
-ACTUAL VALUE of  Instances for $ELB_NAME: $ACTUAL_VALUE" | mail -s "WARNING: Load Balancer $ELB_NAME : InService Instances: $ACTUAL_VALUE" "engineering@ahalife.com"
+ACTUAL VALUE of  Instances for $ELB_NAME: $ACTUAL_VALUE" | mail -s "WARNING: Load Balancer $ELB_NAME : InService Instances: $ACTUAL_VALUE" "engineering@abc.com"
 	
 	else
 	if [[ "$ACTUAL_VALUE" -gt "$THRESHOLD_VALUE" ] ; then
